@@ -69,6 +69,7 @@ function hello(){
   console.log('hello!')
 }
 
+// help show commands to use 
 function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js ")
 }
