@@ -39,6 +39,8 @@ function onDataReceived(text) {
   }
   else if(text === 'hello\n'){
     hello();
+  } else if(text.match("help")) {
+    help()
   }
   else{
     unknownCommand(text);
@@ -65,6 +67,10 @@ function unknownCommand(c){
  */
 function hello(){
   console.log('hello!')
+}
+
+function help(){
+  console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js ")
 }
 
 
