@@ -57,6 +57,15 @@ function onDataReceived(text) {
   else if(text.match(/remove/)){
     remove(text)
   }
+  else if(text == "edit\n"){
+    error()
+  }
+  else if(text.match(/edit\s+\d\s+\w+/)){
+    edit(text)
+  }
+  else if(text.match(/edit\s+\w+/)){
+    editTwo(text)
+  }
   else{
     unknownCommand(text);
   }
@@ -76,9 +85,8 @@ function unknownCommand(c){
 
 // error function
 function error (){
-  console.log("Error")
+  console.log("error")
 }
-
 
 /**
  * Says hello
@@ -115,6 +123,22 @@ else if(text.match(/remove\s+\d+/) && number < tasks.length) {
 tasks.splice(number, 1);
 } else 
   error()
+}
+
+
+function editTwo(text){
+  let newText = text.substr(5)
+  tasks.pop()
+  tasks.push(newText)
+}
+
+
+function edit(text){
+  let newText = text.substr(7)
+  let numb = text.match(/\d+/) - 1;
+  let res =tasks[numb].replace(tasks[numb],newText)
+  tasks[numb] = res
+ 
 }
 
 // Add task
