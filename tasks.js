@@ -33,16 +33,26 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n' || text === 'exit\n') {
+  let textTask = text.substr(4); 
+
+
+
+  if (text === 'quit\n' || text == 'exit\n') {
     quit();
   }
-  else if(text.slice(0, 5) === 'hello'){
+  else if(text.slice(0, 5) == 'hello'){
     hello(text);
   } 
   else if(text.match("help")) {
     help()
   }
-  else if(text === 'list\n') {
+  else if(text.split(" ", 1) == 'add'){
+    add(textTask)
+  }
+  else if(text.trim() == 'add'){
+    error()
+  }
+  else if(text == "list\n"){
     list()
   }
   else{
@@ -63,6 +73,11 @@ function unknownCommand(c){
 }
 
 
+function error (){
+  console.log("Error")
+}
+
+
 /**
  * Says hello
  *
@@ -77,11 +92,23 @@ function hello(value){
 function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata ")
 }
+let tasks = ['Go to work', 'Go home', 'Eat dinner']
 
 function list(){
-  let tasks = ['Go to work', 'Go home', 'Eat dinner']
-  let tasksList = tasks.map(item => `${item}\n`).join('')
-    console.log(tasksList)
+  // let taskArray = tasks.map(item => `${item}\n`).join('')
+  for (i=1; i<tasks.length; i++){
+    console.log(i + "-" + tasks[i])
+  }
+}
+
+
+function add(textTask) {
+  
+if(textTask.trim()){
+tasks.push(textTask)} else {
+  console.log("Error")
+}
+  
 }
 
 /**
