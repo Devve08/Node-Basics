@@ -33,8 +33,7 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  let textTask = text.substr(4); 
-
+  let textTask = text.substr(4);
 
 
   if (text === 'quit\n' || text == 'exit\n') {
@@ -54,6 +53,9 @@ function onDataReceived(text) {
   }
   else if(text == "list\n"){
     list()
+  }
+  else if(text.match(/remove/)){
+    remove(text)
   }
   else{
     unknownCommand(text);
@@ -92,15 +94,24 @@ function hello(value){
 function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata ")
 }
-let tasks = ['Go to work', 'Go home', 'Eat dinner']
+let tasks = [ 'Hello', 'hello 2', 'hello 3']
 
 function list(){
   // let taskArray = tasks.map(item => `${item}\n`).join('')
-  for (i=1; i<tasks.length; i++){
-    console.log(i + "-" + tasks[i])
+  for (i=0; i<tasks.length; i++){
+    console.log(i+1 + "-" + tasks[i])
   }
-}
+} 
 
+function remove(text){
+  let number = text.match(/\d+/)-1;
+if (text === 'remove\n'){
+  tasks.pop()
+}
+else if(text.match(/remove\s+\d+/) && number <= tasks.length) {
+tasks.splice(number, 1);
+}
+}
 
 function add(textTask) {
   
