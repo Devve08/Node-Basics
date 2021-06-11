@@ -38,8 +38,12 @@ function onDataReceived(text) {
   }
   else if(text.slice(0, 5) === 'hello'){
     hello(text);
-  } else if(text.match("help")) {
+  } 
+  else if(text.match("help")) {
     help()
+  }
+  else if(text === 'list\n') {
+    list()
   }
   else{
     unknownCommand(text);
@@ -74,6 +78,11 @@ function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata ")
 }
 
+function list(){
+  let tasks = ['Go to work', 'Go home', 'Eat dinner']
+  let tasksList = tasks.map(item => `${item}\n`).join('')
+    console.log(tasksList)
+}
 
 /**
  * Exits the application
