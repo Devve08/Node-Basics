@@ -66,6 +66,12 @@ function onDataReceived(text) {
   else if(text.match(/edit\s+\w+/)){
     editTwo(text)
   }
+  else if (text == "check\n"){
+    error()
+  }
+  else if (text.match(/check\s+\d+/)){
+    check()
+  }
   else{
     unknownCommand(text);
   }
@@ -103,13 +109,15 @@ function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata ")
 }
 let tasks = [ 'Hello', 'hello 2', 'hello 3']
+let unchecked = "[ ] "
+let checked = "[✓] "
 
 // show list
 
 function list(){
   // let taskArray = tasks.map(item => `${item}\n`).join('')
   for (i=0; i<tasks.length; i++){
-    console.log(i+1 + "-" + tasks[i])
+    console.log(i+1 + "-" + unchecked + tasks[i])
   }
 } 
 
