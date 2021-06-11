@@ -111,9 +111,10 @@ function remove(text){
 if (text === 'remove\n'){
   tasks.pop()
 }
-else if(text.match(/remove\s+\d+/) && number <= tasks.length) {
+else if(text.match(/remove\s+\d+/) && number < tasks.length) {
 tasks.splice(number, 1);
-}
+} else 
+  error()
 }
 
 // Add task
