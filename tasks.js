@@ -65,8 +65,8 @@ function unknownCommand(c){
  * @returns {void}
  */
 function hello(value){
-  
-  console.log(value.trim() + "!")
+  newValue = value.replace( /  /g , "")
+  console.log(newValue.trim() + "!")
 }
 
 // help show commands to use 
