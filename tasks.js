@@ -74,7 +74,7 @@ function unknownCommand(c){
   console.log('unknown command: "'+c.trim()+'"')
 }
 
-
+// error function
 function error (){
   console.log("Error")
 }
@@ -96,6 +96,8 @@ function help(){
 }
 let tasks = [ 'Hello', 'hello 2', 'hello 3']
 
+// show list
+
 function list(){
   // let taskArray = tasks.map(item => `${item}\n`).join('')
   for (i=0; i<tasks.length; i++){
@@ -103,6 +105,7 @@ function list(){
   }
 } 
 
+// remove task
 function remove(text){
   let number = text.match(/\d+/)-1;
 if (text === 'remove\n'){
@@ -113,6 +116,7 @@ tasks.splice(number, 1);
 }
 }
 
+// Add task
 function add(textTask) {
   
 if(textTask.trim()){
