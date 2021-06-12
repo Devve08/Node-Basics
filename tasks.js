@@ -114,13 +114,14 @@ function hello(value){
 function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata \n edit \n add \n remove \n check \n uncheck ")
 }
-let tasks = [ 'Hello', 'hello 2', 'hello 3']
+let tasks = [ '[ ]Hello', '[ ]hello 2', '[ ]hello 3']
 
 // show list
 
 function list(){
- 
+  
   for (i=0; i<tasks.length; i++){
+    // let tasksUpdated = "[ ]" + tasks[i]
       console.log(i+1 + " " + tasks[i])
       
   }
@@ -202,7 +203,7 @@ function edit(text){
 function add(textTask) {
   
 if(textTask.trim()){
-tasks.push(textTask)} else {
+tasks.push("[ ]" + textTask)} else {
   console.log("Error")
 }
   
