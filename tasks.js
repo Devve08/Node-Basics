@@ -114,12 +114,25 @@ function hello(value){
 function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata \n edit \n add \n remove \n check \n uncheck ")
 }
-let tasks = [ '[ ]Hello', '[ ]hello 2', '[ ]hello 3']
+let tasks = [] 
+const fs = require('fs');
+
+let rawdata = fs.readFileSync('database.json');
+let data = JSON.parse(rawdata);
+let mappedData = data.map(myFunction)
+ 
+ function myFunction(value, index, array){
+     return tasks.push(value)
+     
+ }
+ 
 
 // show list
 
 function list(){
-  
+
+
+
   for (i=0; i<tasks.length; i++){
     // let tasksUpdated = "[ ]" + tasks[i]
       console.log(i+1 + " " + tasks[i])
@@ -215,9 +228,13 @@ tasks.push("[ ]" + textTask)} else {
  * @returns {void}
  */
 function quit(){
+  const fs = require("fs");
+  let data = JSON.stringify(tasks);
+  fs.writeFileSync('database.json', data);
   console.log('Quitting now, goodbye!')
   process.exit();
 }
+
 
 // The following line starts the application
 startApp("Mhamad Safa")
