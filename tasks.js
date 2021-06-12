@@ -112,11 +112,9 @@ function hello(value){
 
 // help show commands to use 
 function help(){
-  console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata ")
+  console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata \n edit \n add \n remove \n check \n uncheck ")
 }
 let tasks = [ 'Hello', 'hello 2', 'hello 3']
-let unchecked = "[ ] "
-let checked = "[✓] "
 
 // show list
 
@@ -140,7 +138,7 @@ tasks.splice(number, 1);
   error()
 }
 
-
+// object to get values from when tasks are checked or unchecked
   let whichOne = [
     {
       unchecked: "[ ]",
@@ -148,7 +146,7 @@ tasks.splice(number, 1);
     }
   ] 
 
-
+// funcion check
 function check(text){
   let number = text.match(/\d+/)-1;
   if (text.match(/check\s+\d+/)&& number < tasks.length){
@@ -158,6 +156,8 @@ function check(text){
 
 }
 
+// function uncheck
+
 function uncheck(text){
   let number = text.match(/\d+/)-1;
   if (text.match(/uncheck\s+\d+/)&& number < tasks.length){
@@ -166,13 +166,14 @@ function uncheck(text){
   }
 
 }
-
+// function edit last task when user do not specify which task to edit
 function editTwo(text){
   let newText = text.substr(5)
   tasks.pop()
   tasks.push(newText)
 }
 
+// function edit when user specify which task to edit
 
 function edit(text){
   let newText = text.substr(7)
