@@ -115,8 +115,23 @@ function help(){
   console.log("lists of commands available: \n hello \n help \n unknown command \n exit \n quit \n node tasks.js \n Hello Batata \n edit \n add \n remove \n check \n uncheck ")
 }
 let tasks = [] 
-const fs = require('fs');
+let its = undefined
 
+let command = process.argv[2]
+if (command === "blahblah") {
+  const fs = require('fs');
+its = "blahblah.json"
+let rawdataTwo = fs.readFileSync('blahblah.json');
+let dataTwo = JSON.parse(rawdataTwo);
+let mappedData = dataTwo.map(myFunctionTwo)
+ 
+ function myFunctionTwo(valueTwo, index, array){
+     return tasks.push(valueTwo)
+     
+ }
+} else  {
+const fs = require('fs');
+its = "database.json"
 let rawdata = fs.readFileSync('database.json');
 let data = JSON.parse(rawdata);
 let mappedData = data.map(myFunction)
@@ -124,7 +139,7 @@ let mappedData = data.map(myFunction)
  function myFunction(value, index, array){
      return tasks.push(value)
      
- }
+ }}
  
 
 // show list
@@ -229,10 +244,13 @@ tasks.push("[ ]" + textTask)} else {
  */
 function quit(){
   const fs = require("fs");
-  let data = JSON.stringify(tasks);
-  fs.writeFileSync('database.json', data);
+  let data = JSON.stringify(tasks, null, 2);
+
+  fs.writeFile(its, data, (err) => {
+      if (err) throw err;
+  
   console.log('Quitting now, goodbye!')
-  process.exit();
+  process.exit();})
 }
 
 
