@@ -149,7 +149,15 @@ tasks.splice(number, 1);
 // funcion check
 function check(text){
   let number = text.match(/\d+/)-1;
+  let text2 = tasks[number].slice(3)
   if (text.match(/check\s+\d+/)&& number < tasks.length){
+    if(tasks[number].slice(0, 3)== "[ ]"){
+       tasks[number]=tasks[number].replace(tasks[number], whichOne[0].checked.concat(text2));
+    } 
+    else if (tasks[number].slice(0,3)== "[✓]") {
+      tasks[number]=tasks[number].replace(tasks[number], whichOne[0].checked.concat(text2));
+    } 
+    else
        tasks[number]=tasks[number].replace(tasks[number], whichOne[0].checked.concat(tasks[number]));
        
   }
@@ -160,7 +168,15 @@ function check(text){
 
 function uncheck(text){
   let number = text.match(/\d+/)-1;
-  if (text.match(/uncheck\s+\d+/)&& number < tasks.length){
+  let text2 = tasks[number].slice(3)
+  if (text.match(/check\s+\d+/)&& number < tasks.length){
+    if(tasks[number].slice(0, 3)== "[✓]"){
+       tasks[number]=tasks[number].replace(tasks[number], whichOne[0].unchecked.concat(text2));
+    } 
+    else if (tasks[number].slice(0,3)== "[ ]") {
+      tasks[number]=tasks[number].replace(tasks[number], whichOne[0].unchecked.concat(text2));
+    } 
+    else
        tasks[number]=tasks[number].replace(tasks[number], whichOne[0].unchecked.concat(tasks[number]));
        
   }
